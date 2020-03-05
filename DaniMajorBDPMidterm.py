@@ -3,7 +3,7 @@ from pyspark import SparkConf, SparkContext
 
 import aspell
 
-conf = SparkConf().setMaster('local').setAppName('DMajorMidterm.py')
+conf = SparkConf().setMaster('local').setAppName('DMajorBDPMidterm.py')
 sc = SparkContext(conf = conf)
 
 #import files
