@@ -24,7 +24,7 @@ def get_words(name):
     #separate words
     global words
     words = name.map(lambda line: str(line)).flatMap(lambda line: line.split())
-    words.take(1)  # RDD[str]
+    words.take(1)
     #get total number of words
     words_count = words.map(lambda word: (word, 1)).reduceByKey(lambda x, y: x + y)
     total_words = sum(words_count.collectAsMap().values())
