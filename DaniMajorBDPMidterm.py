@@ -1,6 +1,4 @@
 from pyspark import SparkConf, SparkContext
-
-
 import aspell
 
 conf = SparkConf().setMaster('local').setAppName('DMajorBDPMidterm.py')
