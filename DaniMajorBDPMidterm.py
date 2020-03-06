@@ -7,15 +7,12 @@ sc = SparkContext(conf = conf)
 #import files
 fileToAnalyze1 = sc.textFile('/home/dani/Downloads/Encrypted-1.txt')
 fileToAnalyze1.take(1)
-fileToAnalyze1.getNumPartitions()
 
 fileToAnalyze2 = sc.textFile('/home/dani/Downloads/Encrypted-2.txt')
 fileToAnalyze2.take(1)
-fileToAnalyze2.getNumPartitions()
 
 fileToAnalyze3 = sc.textFile('/home/dani/Downloads/Encrypted-3.txt')
 fileToAnalyze3.take(1)
-fileToAnalyze3.getNumPartitions()
 
 
 def get_words(name):
@@ -89,7 +86,7 @@ def check_words(words):
 def translate(name, path):
     decrypted = words.map(lambda w: decrypt(w, shift=shift))
     #find the fraction of decrypted words that are in the dictionary
-    decrypted.mapPartitions(check_words).mean()
+    decrypted.map(check_words).mean()
     #save as text file
     name.coalesce(1).map(lambda line: decrypt(line, shift)).saveAsTextFile(path)
 
